@@ -60,5 +60,9 @@ public class UrlListActivity extends BaseActivity {
             }
         });
     }
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 
 }

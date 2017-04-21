@@ -25,6 +25,27 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        SharedPreferences pref = getSharedPreferences("data", MODE_PRIVATE);
+        String titles = pref.getString("titles", "");
+        String urls = pref.getString("urls", "");
+
+        String[] titlesArray = null;
+        String[] urlsArray = null;
+        if (! titles.equals("") && ! urls.equals("")) {
+            titlesArray = titles.split("#");//title之间用#分割
+            urlsArray = urls.split(" ");//url之间用空格做分割，因为url中不会有空格
+        }
+        if (titlesArray != null) {
+            titleList = new ArrayList<>();
+            urlList = new ArrayList<>();
+            map = new HashMap<>();
+            for (int i = 0; i < titlesArray.length; i++) {
+                titleList.add(titlesArray[i]);
+                urlList.add(urlsArray[i]);
+                map.put(titlesArray[i], urlsArray[i]);
+            }
+        }
+
         //init view
         final TextView textView = (TextView) findViewById(R.id.title);
         Button add = (Button) findViewById(R.id.add);
@@ -59,24 +80,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 textView.setText(title);
             }
         });
+        webView.loadUrl(homeUrl);
 
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    protected void onStart() {
+        super.onStart();
         Intent intent = getIntent();
         String url = intent.getStringExtra("url");
+
         if(url != null && url.length() != 0) {
             webView.loadUrl(url);
         }
-
-    }
-
-    @Override
-    public void onRestart() {
-        super.onRestart();
-
     }
 
     @Override
