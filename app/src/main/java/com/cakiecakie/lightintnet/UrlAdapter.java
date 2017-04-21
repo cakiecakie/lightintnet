@@ -50,6 +50,8 @@ public class UrlAdapter extends ArrayAdapter<String> {
         return view;
     }
 
+
+
     class ViewHolder {
         TextView textView;
     }

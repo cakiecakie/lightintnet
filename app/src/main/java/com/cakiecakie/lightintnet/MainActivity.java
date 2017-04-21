@@ -59,6 +59,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 textView.setText(title);
             }
         });
+
     }
 
     @Override
@@ -68,9 +69,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         String url = intent.getStringExtra("url");
         if(url != null && url.length() != 0) {
             webView.loadUrl(url);
-        } else {
-            webView.loadUrl(homeUrl);
         }
+
+    }
+
+    @Override
+    public void onRestart() {
+        super.onRestart();
 
     }
 
