@@ -50,8 +50,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         final TextView textView = (TextView) findViewById(R.id.title);
         Button add = (Button) findViewById(R.id.add);
         Button list = (Button) findViewById(R.id.list);
+        Button home = (Button) findViewById(R.id.home);
         add.setOnClickListener(this);
         list.setOnClickListener(this);
+        home.setOnClickListener(this);
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         webView = (WebView) findViewById(R.id.web_view);
         //支持JavaScript
@@ -111,6 +113,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.list:
                 Intent intent = new Intent(MainActivity.this, UrlListActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.home:
+                webView.loadUrl(homeUrl);
+                break;
+            default:
+                break;
         }
     }
     //按下返回键，可让WebView返回到上一个网页
