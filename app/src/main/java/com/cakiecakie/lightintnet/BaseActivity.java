@@ -19,7 +19,7 @@ public class BaseActivity extends Activity {
     protected static List<String> titleList = new ArrayList<>();
     protected static Map<String, String> map = new HashMap<>();
 
-    protected String homeUrl = "https://www.sogou.com";
+    protected String homeUrl;
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {

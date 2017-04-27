@@ -46,6 +46,13 @@ public class UrlListActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
+        final Button back = (Button) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         final Button delete = (Button) findViewById(R.id.delete);
         delete.setOnClickListener(new View.OnClickListener() {
             @Override

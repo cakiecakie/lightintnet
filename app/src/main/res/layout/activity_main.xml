@@ -4,15 +4,32 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-    <TextView
-        android:id="@+id/title"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:textSize="16dp"
-        android:gravity="center"
-        android:maxLines="1"
-        />
+        android:background="#fff"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:background="#fff"
+            />
+        <Button
+            android:id="@+id/add_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/audience_family_footer"
+            />
+    </LinearLayout>
+
 
     <View
         android:layout_width="match_parent"
@@ -37,25 +54,23 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-
+        android:background="#fff"
         >
 
         <Button
             android:id="@+id/home"
-            android:layout_width="80dp"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
-            android:background="#fff"
-            android:text="home"
-            android:textSize="24dp" />
+            android:background="@drawable/addhome_light"
+            />
 
         <Button
             android:id="@+id/add"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:background="#fff"
-            android:text="+"
-            android:textSize="30dp"
+
+            android:background="@drawable/add_folder"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
@@ -66,9 +81,8 @@
             android:id="@+id/list"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:background="#fff"
-            android:text="收藏"
-            android:textSize="24dp"
+            android:background="@drawable/actionbar_button_list_light"
+
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"

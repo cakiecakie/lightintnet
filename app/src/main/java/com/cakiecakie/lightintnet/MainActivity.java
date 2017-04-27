@@ -26,6 +26,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 
         SharedPreferences pref = getSharedPreferences("data", MODE_PRIVATE);
+        homeUrl = pref.getString("homeUrl", "");
+        if (homeUrl.equals("")) {
+            homeUrl = "https://www.sogou.com";
+        }
         String titles = pref.getString("titles", "");
         String urls = pref.getString("urls", "");
 
@@ -48,9 +52,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         //init view
         final TextView textView = (TextView) findViewById(R.id.title);
+        Button addHome = (Button) findViewById(R.id.add_home);
         Button add = (Button) findViewById(R.id.add);
         Button list = (Button) findViewById(R.id.list);
         Button home = (Button) findViewById(R.id.home);
+        addHome.setOnClickListener(this);
         add.setOnClickListener(this);
         list.setOnClickListener(this);
         home.setOnClickListener(this);
@@ -100,6 +106,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.add_home:
+                homeUrl = webView.getOriginalUrl();
+                Toast.makeText(this, "主页已更新", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.add:
                 if (map.containsKey(title)) {
                     Toast.makeText(this, "已添加", Toast.LENGTH_SHORT).show();
@@ -148,6 +158,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             urls.append(url + " ");
         }
         editor.putString("urls", urls.toString().trim());
+        editor.putString("homeUrl", homeUrl);
         editor.commit();
     }
 
